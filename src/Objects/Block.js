@@ -1,7 +1,9 @@
 import * as THREE from "three";
 import gsap from "gsap";
+import Experience from "../Experience";
 export default class Block {
   constructor(size, clickable, pos, name = "") {
+    this.experience = new Experience();
     this.mesh = new THREE.Mesh(
       new THREE.BoxGeometry(size, 50, size),
       new THREE.MeshLambertMaterial({
@@ -15,11 +17,15 @@ export default class Block {
     this.mesh.name = name;
     this.mesh.position.copy(pos);
     this.original_pos = pos;
-    this.clickable = clickable;
+    this.mesh.clickable = clickable;
+    this.mesh.onclick = this.onclick;
   }
 
-  update() {
-    if (this.clickable) {
+  onclick = () => {
+    this.experience.scene.setInitialClick(true);
+  };
+  update = () => {
+    if (this.mesh.clickable) {
       if (this.mesh.hover) {
         gsap.to(this.mesh.position, {
           y: this.original_pos.y + 1,
@@ -32,5 +38,5 @@ export default class Block {
         });
       }
     }
-  }
+  };
 }

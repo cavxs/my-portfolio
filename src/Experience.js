@@ -10,16 +10,19 @@ export default class Experience {
     if (_instance) return _instance;
     _instance = this;
 
-    this.renderer = new THREE.WebGLRenderer({ antialias: true });
+    this.renderer = new THREE.WebGLRenderer({
+      antialias: true,
+    });
+
     this.clock = new THREE.Clock();
     this.cameraHandler = new CameraHandler();
     this.scene = new MainScene();
     this.mouseHandler = new MouseHandler();
 
-    this.renderer.setClearColor(0x000311);
+    this.renderer.setClearColor(0x2c2c38);
 
     this.renderer.setSize(innerWidth, innerHeight);
-
+    this.renderer.setPixelRatio(window.devicePixelRatio);
     this.dt = 0;
 
     document.body.appendChild(this.renderer.domElement);

@@ -14,9 +14,9 @@ export default class MouseHandler {
         this._experience.cameraHandler.instance
       );
       const intersects = raycaster.intersectObjects(
-        this._experience.scene.hover_objects
+        this._experience.scene.blocks.hover_objects
       );
-      for (const obj of this._experience.scene.hover_objects) {
+      for (const obj of this._experience.scene?.blocks?.hover_objects) {
         obj.hover = false;
       }
       if (intersects.length) {
@@ -28,6 +28,27 @@ export default class MouseHandler {
         this.changeCursor("default");
       }
       //   console.log(intersects);
+    });
+
+    window.addEventListener("click", (e) => {
+      this.mousePos.x = (e.clientX / window.innerWidth) * 2 - 1;
+      this.mousePos.y = -(e.clientY / window.innerHeight) * 2 + 1;
+      const raycaster = new THREE.Raycaster();
+      raycaster.setFromCamera(
+        this.mousePos,
+        this._experience.cameraHandler.instance
+      );
+      const intersects = raycaster.intersectObjects(
+        this._experience.scene?.blocks?.hover_objects
+      );
+      for (const obj of this._experience.scene?.blocks?.hover_objects) {
+        obj.hover = false;
+      }
+      if (intersects.length) {
+        if (intersects[0].object.clickable) {
+          intersects[0].object.onclick();
+        }
+      }
     });
   }
 

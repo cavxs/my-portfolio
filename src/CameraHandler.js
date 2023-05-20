@@ -1,4 +1,5 @@
 import * as THREE from "three";
+import gsap from "gsap";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 
 import Experience from "./Experience";
@@ -13,14 +14,9 @@ export default class CameraHandler {
       1000
     );
 
-    this.instance.position.set(35, 36, 42);
+    this.instance.position.set(33.662, 35.36, 42.43);
     this.instance.applyQuaternion(
-      new THREE.Quaternion(
-        -0.14378529848747876,
-        0.31863893231145807,
-        0.048967817958257866,
-        0.9356266197360396
-      )
+      new THREE.Quaternion(-0.173, 0.295, 0.054, 0.938)
     );
     this.target;
     this.dt = this.experience.dt;
@@ -44,6 +40,24 @@ export default class CameraHandler {
   }
   update() {
     // console.log(this.instance.position);
-    if (this.controls) this.controls.update();
+    if (this.controls) {
+      this.controls.update();
+    } else {
+      if (this.experience.scene.initial_click) {
+        gsap.to(this.instance.position, {
+          x: 36.831,
+          y: 33.772,
+          z: 51.067,
+          duration: 0.5,
+        });
+        gsap.to(this.instance.quaternion, {
+          x: -0.1203,
+          y: 0.538,
+          z: 0.078,
+          w: 0.831,
+          duration: 0.5,
+        });
+      }
+    }
   }
 }
