@@ -81,6 +81,7 @@ export default class MainScene {
 
   setInitialClick(val) {
     this.initial_click = val;
+    this.experience.cameraHandler.initialClickSetup();
     document.getElementById("gui").classList.toggle("hidden", !val);
   }
   addToScene(obj, pos) {

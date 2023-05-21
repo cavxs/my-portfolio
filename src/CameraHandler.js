@@ -75,26 +75,26 @@ export default class CameraHandler {
     this.instance.aspect = window.innerWidth / window.innerHeight;
     this.instance.updateProjectionMatrix();
   }
+
+  initialClickSetup() {
+    gsap.to(this.instance.position, {
+      x: 36.831,
+      y: 33.772,
+      z: 51.067,
+      duration: 0.5,
+    });
+    gsap.to(this.instance.quaternion, {
+      x: -0.1203,
+      y: 0.538,
+      z: 0.078,
+      w: 0.831,
+      duration: 0.5,
+    });
+  }
   update() {
     // console.log(this.instance.position);
     if (this.controls) {
       this.controls.update();
-    } else {
-      if (this.experience.scene.initial_click) {
-        gsap.to(this.instance.position, {
-          x: 36.831,
-          y: 33.772,
-          z: 51.067,
-          duration: 0.5,
-        });
-        gsap.to(this.instance.quaternion, {
-          x: -0.1203,
-          y: 0.538,
-          z: 0.078,
-          w: 0.831,
-          duration: 0.5,
-        });
-      }
-    }
+    } 
   }
 }

@@ -36,6 +36,13 @@ p {
   padding-top: 100px;
   padding-left: 185px;
   box-sizing: border-box;
+  overflow: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+#gui::-webkit-scrollbar {
+  display: none;
 }
 
 #gui.hidden {
