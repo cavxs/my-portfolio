@@ -30,26 +30,26 @@ export default class MainScene {
     // this.instance.background = texture;
     this.backgroundGradient(0x000000, 0x040921);
     this.stars();
-    // const light1 = new THREE.DirectionalLight(0x9086a7); // purple
-    // const light2 = new THREE.DirectionalLight(0xffdeb0);
-    // const light3 = new THREE.HemisphereLight(0xd9cebf);
-    // const light4 = new THREE.DirectionalLight(0xffffff);
+    const light1 = new THREE.DirectionalLight(0x9086a7); // purple
+    const light2 = new THREE.DirectionalLight(0xffdeb0);
+    const light3 = new THREE.HemisphereLight(0xd9cebf);
+    const light4 = new THREE.DirectionalLight(0xffffff);
 
-    // light2.position.set(0, 19, 60);
-    // light2.intensity = 1;
+    light2.position.set(0, 19, 60);
+    light2.intensity = 1;
 
-    // light1.position.set(60, 19, 3);
-    // light1.intensity = 1;
-    // light3.intensity = 0.5;
+    light1.position.set(60, 19, 3);
+    light1.intensity = 1;
+    light3.intensity = 0.5;
 
-    // light4.position.set(0, 50, 0);
-    // light4.intensity = 0.3;
+    light4.position.set(0, 50, 0);
+    light4.intensity = 0.3;
     // const light1helper = new THREE.DirectionalLightHelper(light1, 5);
     // const light2helper = new THREE.DirectionalLightHelper(light2, 5);
-    // this.instance.add(light1);
-    // this.instance.add(light2);
-    // this.instance.add(light3);
-    // this.instance.add(light4);
+    this.instance.add(light1);
+    this.instance.add(light2);
+    this.instance.add(light3);
+    this.instance.add(light4);
     // this.instance.add(light1helper);
     // this.instance.add(light2helper);
     this.blocks = new Blocks();

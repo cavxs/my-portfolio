@@ -2,11 +2,11 @@ import * as THREE from "three";
 import gsap from "gsap";
 import Experience from "../Experience";
 export default class Block {
-  constructor(size, clickable, pos, name = "") {
+  constructor(size, clickable, pos, name = "", section = "") {
     this.experience = new Experience();
     this.mesh = new THREE.Mesh(
       new THREE.BoxGeometry(size, 200, size),
-      new THREE.MeshBasicMaterial({
+      new THREE.MeshLambertMaterial({
         color: 0xe8e5e1,
         wireframe: false,
         polygonOffset: true,
@@ -14,6 +14,7 @@ export default class Block {
         polygonOffsetUnits: 1,
       })
     );
+    this.section = section;
     this.mesh.name = name;
     this.mesh.position.copy(pos);
     this._up_pos = pos.y + 4;
@@ -26,6 +27,7 @@ export default class Block {
   onclick = () => {
     this.experience.scene.setInitialClick(true);
     this.experience.scene.current_section = this.mesh.name;
+    this.experience.gui.selectSection(this.section);
   };
   update = () => {
     const cur_section = this.experience.scene.current_section;

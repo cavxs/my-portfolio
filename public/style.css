@@ -56,24 +56,52 @@ p {
 }
 
 #gui:not(.hidden) .popout {
-  opacity: 0;
-  animation: popout 0.2s ease-out forwards;
+  animation: popout 0.4s ease backwards;
 }
 
+#gui:not(.hidden) .fade-in {
+  animation: fade-in 0.3s ease backwards;
+}
+
+#gui:not(.hidden) .popout:nth-child(1) {
+  animation-delay: 0.3s;
+}
 #gui:not(.hidden) .popout:nth-child(2) {
-  animation-delay: 0.15s;
+  animation-delay: 0.45s;
+}
+#gui:not(.hidden) .popout:nth-child(3) {
+  animation-delay: 0.6s;
+}
+#gui:not(.hidden) .fade-in:nth-child(1) {
+  animation-delay: 0.1s;
+}
+#gui:not(.hidden) .fade-in:nth-child(2) {
+  animation-delay: 0.2s;
+}
+#gui:not(.hidden) .fade-in:nth-child(3) {
+  animation-delay: 0.3s;
 }
 
 @keyframes popout {
   0% {
-    transform: scale(1);
     opacity: 0;
-  }
-  50% {
-    transform: scale(1.1);
+    filter: brightness(3) saturate(3);
+    transform: scale(0.8, 0.8);
   }
   100% {
-    transform: scale(1);
     opacity: 1;
+    filter: brightness(1) saturate(1);
+    transform: scale(1, 1);
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    filter: blur(4px);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0);
   }
 }

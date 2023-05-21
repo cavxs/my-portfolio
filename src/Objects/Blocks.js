@@ -13,7 +13,8 @@ export default class Blocks {
       size,
       true,
       new THREE.Vector3(0, max_height, 0),
-      "Portfolio"
+      "Portfolio",
+      "portfolio"
     );
     this.block12 = new Block(
       size,
@@ -24,7 +25,8 @@ export default class Blocks {
       size,
       true,
       new THREE.Vector3(size * 2, max_height - one_unit * 2, 0),
-      "About me"
+      "Github",
+      "github"
     );
     this.block21 = new Block(
       size,
@@ -45,7 +47,8 @@ export default class Blocks {
       size,
       true,
       new THREE.Vector3(0, max_height - one_unit * 2, size * 2),
-      "Services"
+      "Services",
+      "services"
     );
     this.block32 = new Block(
       size,
@@ -56,7 +59,8 @@ export default class Blocks {
       size,
       true,
       new THREE.Vector3(size * 2, max_height - one_unit * 2.5, size * 2),
-      "Skills"
+      "Skills",
+      "skills"
     );
 
     this.block12.mesh.position.x -= 0.1;
