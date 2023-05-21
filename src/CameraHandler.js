@@ -20,10 +20,47 @@ export default class CameraHandler {
     );
     this.target;
     this.dt = this.experience.dt;
+    this.initialCameraPosition = this.instance.position.clone();
 
     // this.enableOrbitControls();
     this.currentPosition = new THREE.Vector3();
     this.currentLookAt = new THREE.Vector3();
+
+    const maxScrollUp = 36;
+    const maxScrollDown = -15;
+    var targetPositionY = -15; // Example target position
+
+    const moveCamera = (position) => {
+      gsap.to(this.instance.position, {
+        y: position,
+        duration: 0.5,
+        ease: "power2.out",
+        // onUpdate: () => {
+        //   camera.lookAt(scene.position);
+        // },
+      });
+    };
+    window.addEventListener("wheel", (e) => {
+      // Determine the scroll direction and calculate the target position
+      const scrollDelta = e.deltaY;
+      const currentPosition = this.instance.position.y;
+      let targetPosition;
+
+      if (scrollDelta < 0) {
+        targetPosition = Math.min(
+          maxScrollUp,
+          currentPosition - scrollDelta * 0.8
+        );
+      } else {
+        targetPosition = Math.max(
+          maxScrollDown,
+          currentPosition - scrollDelta * 0.8
+        );
+      }
+
+      // Move the camera to the target position
+      moveCamera(targetPosition);
+    });
   }
 
   enableOrbitControls() {

@@ -4,6 +4,7 @@ import Experience from "../Experience";
 export default class Blocks {
   constructor() {
     this.mesh = new THREE.Mesh();
+
     const one_unit = 8;
     const max_height = 5;
     const size = 10;
