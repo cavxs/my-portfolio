@@ -61,7 +61,10 @@ export default class Blocks {
 
     this.block12.mesh.position.x -= 0.1;
     this.block13.mesh.position.x -= 0.2;
+    this.block21.mesh.position.z -= 0.1;
     this.block23.mesh.position.x -= 0.1;
+    this.block31.mesh.position.z -= 0.2;
+    this.block32.mesh.position.z -= 0.1;
     this.hover_objects = [
       this.block11.mesh,
       this.block13.mesh,

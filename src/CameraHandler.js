@@ -14,9 +14,9 @@ export default class CameraHandler {
       1000
     );
 
-    this.instance.position.set(33.662, 35.36, 42.43);
+    this.instance.position.set(38.155, 36.369, 57.893);
     this.instance.applyQuaternion(
-      new THREE.Quaternion(-0.173, 0.295, 0.054, 0.938)
+      new THREE.Quaternion(-0.0986, 0.25, 0.0256, 0.962)
     );
     this.target;
     this.dt = this.experience.dt;
@@ -49,6 +49,8 @@ export default class CameraHandler {
         );
       }
 
+      this.experience.gui.instance.scrollBy(0, scrollDelta);
+
       // Move the camera to the target position
       gsap.to(this.instance.position, {
         y: targetPosition,
@@ -76,17 +78,19 @@ export default class CameraHandler {
 
   initialClickSetup() {
     gsap.to(this.instance.position, {
-      x: 36.831,
-      y: 33.772,
-      z: 51.067,
-      duration: 0.5,
+      x: 74.452,
+      y: 13.0173,
+      z: 52.365,
+      ease: "power4",
+      duration: 1.5,
     });
     gsap.to(this.instance.quaternion, {
-      x: -0.1203,
-      y: 0.538,
-      z: 0.078,
-      w: 0.831,
-      duration: 0.5,
+      x: 0.006,
+      y: 0.742,
+      z: 0.007,
+      w: 0.67,
+      ease: "power4",
+      duration: 1.2,
     });
   }
   update() {

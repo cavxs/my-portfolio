@@ -2,6 +2,7 @@ import * as THREE from "three";
 import CameraHandler from "./CameraHandler";
 import MainScene from "./MainScene";
 import MouseHandler from "./Utils/MouseHandler";
+import GuiHandler from "./Utils/GuiHandler";
 
 let _instance = this;
 
@@ -12,13 +13,14 @@ export default class Experience {
 
     this.renderer = new THREE.WebGLRenderer({
       antialias: true,
+      precision: "lowp",
     });
 
     this.clock = new THREE.Clock();
     this.cameraHandler = new CameraHandler();
     this.scene = new MainScene();
     this.mouseHandler = new MouseHandler();
-
+    this.gui = new GuiHandler();
     this.renderer.setClearColor(0x2c2c38);
 
     this.renderer.setSize(innerWidth, innerHeight);

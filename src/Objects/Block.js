@@ -5,8 +5,8 @@ export default class Block {
   constructor(size, clickable, pos, name = "") {
     this.experience = new Experience();
     this.mesh = new THREE.Mesh(
-      new THREE.BoxGeometry(size, 50, size),
-      new THREE.MeshLambertMaterial({
+      new THREE.BoxGeometry(size, 200, size),
+      new THREE.MeshBasicMaterial({
         color: 0xe8e5e1,
         wireframe: false,
         polygonOffset: true,
