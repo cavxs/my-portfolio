@@ -1,4 +1,4 @@
-const sections = ["portfolio", "services", "skills", "toggle"];
+const sections = ["portfolio", "services", "skills", "github"];
 export default class GuiHandler {
   constructor() {
     this.instance = document.getElementById("gui");
