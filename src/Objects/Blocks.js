@@ -36,7 +36,9 @@ export default class Blocks {
     this.block22 = new Block(
       size,
       true,
-      new THREE.Vector3(size, max_height - one_unit * 1.5, size)
+      new THREE.Vector3(size, max_height - one_unit * 1.5, size),
+      "Start",
+      "start"
     );
     this.block23 = new Block(
       size,

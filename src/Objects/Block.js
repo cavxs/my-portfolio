@@ -25,22 +25,27 @@ export default class Block {
   }
 
   onclick = () => {
-    this.experience.scene.setInitialClick(true);
-    this.experience.scene.current_section = this.mesh.name;
-    this.experience.gui.selectSection(this.section);
+    // this.experience.scene.startInitialClick();
+    // this.experience.scene.current_section = this.mesh.name;
+    // this.experience.gui.selectSection(this.section);
+    if (this.section === "start") {
+      this.experience.scene.startInitialClick();
+      this.experience.scene.current_section = "Portfolio";
+      this.experience.gui.selectSection("portfolio");
+    }
   };
   update = () => {
     const cur_section = this.experience.scene.current_section;
     let cur_pos = this.original_pos;
 
-    // if (cur_section) {
-    //   if (cur_section === this.mesh.name) {
-    //     gsap.to(this.mesh.position, {
-    //       y: this.original_pos.y - this._up_pos,
-    //       duration: 0.4,
-    //     });
-    //   }
-    // }
+    if (cur_section) {
+      if (cur_section === this.mesh.name) {
+        gsap.to(this.mesh.position, {
+          y: this.original_pos.y - this._up_pos,
+          duration: 0.4,
+        });
+      }
+    }
     if (this.mesh.clickable) {
       if (this.mesh.hover) {
         gsap.to(this.mesh.position, {

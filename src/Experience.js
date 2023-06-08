@@ -3,6 +3,7 @@ import CameraHandler from "./CameraHandler";
 import MainScene from "./MainScene";
 import MouseHandler from "./Utils/MouseHandler";
 import GuiHandler from "./Utils/GuiHandler";
+import ResourceLoader from "./Utils/ResourceLoader";
 
 let _instance = this;
 
@@ -22,7 +23,7 @@ export default class Experience {
     this.mouseHandler = new MouseHandler();
     this.gui = new GuiHandler();
     this.renderer.setClearColor(0x2c2c38);
-
+    this.resourceLoader = new ResourceLoader();
     this.renderer.setSize(innerWidth, innerHeight);
     this.renderer.setPixelRatio(window.devicePixelRatio);
     this.dt = 0;
@@ -33,7 +34,8 @@ export default class Experience {
       this.cameraHandler.resize();
     });
 
-    this.scene.makeWorld();
+    // Load the resources (the world) then make the scene using the data
+    this.resourceLoader.load((loaded) => this.scene.makeWorld(loaded));
     requestAnimationFrame(() => this.tick());
   }
 

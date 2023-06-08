@@ -1,6 +1,9 @@
 import * as THREE from "three";
 import Experience from "./Experience";
 import Block from "./Objects/Block";
+
+import gsap from "gsap";
+
 import Blocks from "./Objects/Blocks";
 export default class MainScene {
   constructor() {
@@ -11,9 +14,12 @@ export default class MainScene {
     this.hover_objects = [];
     this.initial_click = false;
     this.current_section = null;
+
+    this._starSpeed = 0.0001;
+    this._initialStarSpeed = 0.0001;
   }
 
-  makeWorld() {
+  makeWorld(loaded = null) {
     // original colors
     // const light1 = new THREE.DirectionalLight(0xe100ff);
     // const light2 = new THREE.DirectionalLight(0xff9300);
@@ -30,29 +36,63 @@ export default class MainScene {
     // this.instance.background = texture;
     this.backgroundGradient(0x000000, 0x040921);
     this.stars();
-    const light1 = new THREE.DirectionalLight(0x9086a7); // purple
-    const light2 = new THREE.DirectionalLight(0xffdeb0);
-    const light3 = new THREE.HemisphereLight(0xd9cebf);
-    const light4 = new THREE.DirectionalLight(0xffffff);
 
-    light2.position.set(0, 19, 60);
-    light2.intensity = 1;
+    const maxScrollUp = 900;
+    const maxScrollDown = -500;
 
-    light1.position.set(60, 19, 3);
-    light1.intensity = 1;
-    light3.intensity = 0.5;
+    this.experience.gui.instance.addEventListener("wheel", (e) => {
+      const scrollDelta = -e.deltaY;
 
-    light4.position.set(0, 50, 0);
-    light4.intensity = 0.3;
+      const currentPosition = this.starSystem.position.y;
+      let targetPosition;
+      if (scrollDelta < 0) {
+        targetPosition = Math.min(
+          maxScrollUp,
+          currentPosition - scrollDelta * 0.4
+        );
+      } else {
+        targetPosition = Math.max(
+          maxScrollDown,
+          currentPosition - scrollDelta * 0.4
+        );
+      }
+
+      // Move the camera to the target position
+      gsap.to(this.starSystem.position, {
+        y: targetPosition,
+        duration: 0.5,
+        ease: "power2.out",
+        // onUpdate: () => {
+        //   camera.lookAt(scene.position);
+        // },
+      });
+      // this._starSpeed = this._initialStarSpeed * scrollDelta * 10;
+    });
+
+    // const light1 = new THREE.DirectionalLight(0x9086a7); // purple
+    // const light2 = new THREE.DirectionalLight(0xffdeb0);
+    // const light3 = new THREE.HemisphereLight(0xd9cebf);
+    // const light4 = new THREE.DirectionalLight(0xffffff);
+
+    // light2.position.set(0, 19, 60);
+    // light2.intensity = 1;
+
+    // light1.position.set(60, 19, 3);
+    // light1.intensity = 1;
+    // light3.intensity = 0.5;
+
+    // light4.position.set(0, 50, 0);
+    // light4.intensity = 0.3;
     // const light1helper = new THREE.DirectionalLightHelper(light1, 5);
     // const light2helper = new THREE.DirectionalLightHelper(light2, 5);
-    this.instance.add(light1);
-    this.instance.add(light2);
-    this.instance.add(light3);
-    this.instance.add(light4);
+    // this.instance.add(light1);
+    // this.instance.add(light2);
+    // this.instance.add(light3);
+    // this.instance.add(light4);
     // this.instance.add(light1helper);
     // this.instance.add(light2helper);
-    this.blocks = new Blocks();
+    // this.blocks = new Blocks();
+    this.instance.add(loaded);
 
     this.addToScene(this.blocks, new THREE.Vector3(0, -75, 0));
   }
@@ -65,7 +105,7 @@ export default class MainScene {
     this.instance.remove(mesh);
   }
   stars() {
-    const particleCount = 1000;
+    const particleCount = 500;
     const positions = new Float32Array(particleCount * 3);
 
     for (let i = 0; i < particleCount * 3; i += 3) {
@@ -78,6 +118,8 @@ export default class MainScene {
     geometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
     const material = new THREE.PointsMaterial({ color: 0xffff8b });
     const particleSystem = new THREE.Points(geometry, material);
+
+    this.starSystem = particleSystem;
     this.instance.add(particleSystem);
   }
   backgroundGradient(start, end) {
@@ -103,10 +145,12 @@ export default class MainScene {
     // Set the background texture
     this.instance.background = texture;
   }
-  setInitialClick(val) {
-    this.initial_click = val;
+  startInitialClick() {
+    this.initial_click = true;
     this.experience.cameraHandler.initialClickSetup();
-    document.getElementById("gui").classList.toggle("hidden", !val);
+    setTimeout(() => {
+      this.experience.gui.initialize();
+    }, 500);
   }
   addToScene(obj, pos) {
     this.instance.add(obj.mesh);
@@ -117,6 +161,11 @@ export default class MainScene {
   update() {
     for (const obj of this.sceneObjects) {
       if (obj?.update) obj.update();
+    }
+    if (this.starSystem) {
+      // console.logthis.particleSystem
+      this.starSystem.rotation.x += this._starSpeed;
+      this.starSystem.rotation.y += this._starSpeed;
     }
   }
 }

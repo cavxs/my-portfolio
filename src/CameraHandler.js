@@ -30,37 +30,34 @@ export default class CameraHandler {
     const maxScrollDown = -15;
     var targetPositionY = -15; // Example target position
 
-    window.addEventListener("wheel", (e) => {
-      // Determine the scroll direction and calculate the target position
-      const scrollDelta = e.deltaY;
-      const scrolldown = e.deltaY > 0;
-      const currentPosition = this.instance.position.y;
-      let targetPosition;
-
-      if (scrollDelta < 0) {
-        targetPosition = Math.min(
-          maxScrollUp,
-          currentPosition - scrollDelta * 0.4
-        );
-      } else {
-        targetPosition = Math.max(
-          maxScrollDown,
-          currentPosition - scrollDelta * 0.4
-        );
-      }
-
-      this.experience.gui.instance.scrollBy(0, scrollDelta);
-
-      // Move the camera to the target position
-      gsap.to(this.instance.position, {
-        y: targetPosition,
-        duration: 0.5,
-        ease: "power2.out",
-        // onUpdate: () => {
-        //   camera.lookAt(scene.position);
-        // },
-      });
-    });
+    // window.addEventListener("wheel", (e) => {
+    //   // Determine the scroll direction and calculate the target position
+    //   // const scrollDelta = e.deltaY;
+    //   // const scrolldown = e.deltaY > 0;
+    //   // const currentPosition = this.instance.position.y;
+    //   // let targetPosition;
+    //   // if (scrollDelta < 0) {
+    //   //   targetPosition = Math.min(
+    //   //     maxScrollUp,
+    //   //     currentPosition - scrollDelta * 0.4
+    //   //   );
+    //   // } else {
+    //   //   targetPosition = Math.max(
+    //   //     maxScrollDown,
+    //   //     currentPosition - scrollDelta * 0.4
+    //   //   );
+    //   // }
+    //   // this.experience.gui.instance.scrollBy(0, scrollDelta);
+    //   // Move the camera to the target position
+    //   // gsap.to(this.instance.position, {
+    //   //   y: targetPosition,
+    //   //   duration: 0.5,
+    //   //   ease: "power2.out",
+    //   //   // onUpdate: () => {
+    //   //   //   camera.lookAt(scene.position);
+    //   //   // },
+    //   // });
+    // });
   }
 
   enableOrbitControls() {
