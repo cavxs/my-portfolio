@@ -14,9 +14,18 @@ export default class CameraHandler {
       1000
     );
 
-    this.instance.position.set(38.155, 36.369, 57.893);
+    this.instance.position.set(
+      86.2109629608584,
+      110.66595749767006,
+      59.21213026679405
+    );
     this.instance.applyQuaternion(
-      new THREE.Quaternion(-0.0986, 0.25, 0.0256, 0.962)
+      new THREE.Quaternion(
+        -0.1723640927416455,
+        0.4463369042612144,
+        0.08805544363609472,
+        0.8736819937905985
+      )
     );
     this.target;
     this.dt = this.experience.dt;
@@ -26,9 +35,9 @@ export default class CameraHandler {
     this.currentPosition = new THREE.Vector3();
     this.currentLookAt = new THREE.Vector3();
 
-    const maxScrollUp = 36;
-    const maxScrollDown = -15;
-    var targetPositionY = -15; // Example target position
+    // const maxScrollUp = 36;
+    // const maxScrollDown = -15;
+    // var targetPositionY = -15; // Example target position
 
     // window.addEventListener("wheel", (e) => {
     //   // Determine the scroll direction and calculate the target position
@@ -75,18 +84,18 @@ export default class CameraHandler {
 
   initialClickSetup() {
     gsap.to(this.instance.position, {
-      x: 74.452,
-      y: 13.0173,
-      z: 52.365,
-      ease: "power4",
+      x: 87.57564986060362,
+      y: 58.5400131918718,
+      z: 87.37709164687092,
+      ease: "power3",
       duration: 1.5,
     });
     gsap.to(this.instance.quaternion, {
-      x: 0.006,
-      y: 0.742,
-      z: 0.007,
-      w: 0.67,
-      ease: "power4",
+      x: -0.007874189719995784,
+      y: 0.6189695289058582,
+      z: 0.006205993822677122,
+      w: 0.7853510075520285,
+      ease: "power3",
       duration: 1.2,
     });
   }

@@ -13,19 +13,23 @@ export default class MouseHandler {
         this.mousePos,
         this._experience.cameraHandler.instance
       );
-      const intersects = raycaster.intersectObjects(
-        this._experience.scene.blocks.hover_objects
-      );
-      for (const obj of this._experience.scene?.blocks?.hover_objects) {
-        obj.hover = false;
-      }
-      if (intersects.length) {
-        this.changeCursor("pointer");
-        if (intersects[0].object.hover_effect) {
-          intersects[0].object.hover = true;
+      if (this._experience.scene?.blocks) {
+        const intersects = raycaster.intersectObjects(
+          this._experience.scene?.blocks?.hover_objects || []
+        );
+
+        for (const obj of this._experience.scene?.blocks?.hover_objects) {
+          obj.hover = false;
         }
-      } else {
-        this.changeCursor("default");
+        if (intersects?.length) {
+          this.changeCursor("pointer");
+          if (intersects[0].object.hover_effect) {
+            intersects[0].object.hover = true;
+            // console.log(intersects[0]);
+          }
+        } else {
+          this.changeCursor("default");
+        }
       }
       //   console.log(intersects);
     });
@@ -38,15 +42,17 @@ export default class MouseHandler {
         this.mousePos,
         this._experience.cameraHandler.instance
       );
-      const intersects = raycaster.intersectObjects(
-        this._experience.scene?.blocks?.hover_objects
-      );
-      for (const obj of this._experience.scene?.blocks?.hover_objects) {
-        obj.hover = false;
-      }
-      if (intersects.length) {
-        if (intersects[0].object.clickable) {
-          intersects[0].object.onclick();
+      if (this._experience.scene?.blocks) {
+        const intersects = raycaster.intersectObjects(
+          this._experience.scene?.blocks?.hover_objects
+        );
+        for (const obj of this._experience.scene?.blocks?.hover_objects) {
+          obj.hover = false;
+        }
+        if (intersects?.length) {
+          if (intersects[0].object.clickable) {
+            intersects[0].object.onclick();
+          }
         }
       }
     });

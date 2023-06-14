@@ -2,75 +2,56 @@ import * as THREE from "three";
 import Block from "./Block";
 import Experience from "../Experience";
 export default class Blocks {
-  constructor() {
+  constructor(scene) {
     this.mesh = new THREE.Mesh();
 
-    const one_unit = 8;
-    const max_height = 5;
-    const size = 10;
-
     this.block11 = new Block(
-      size,
+      scene.find((x) => x.name === "Cube"),
       true,
-      new THREE.Vector3(0, max_height, 0),
       "Portfolio",
       "portfolio"
     );
     this.block12 = new Block(
-      size,
-      false,
-      new THREE.Vector3(size, max_height - one_unit, 0)
+      scene.find((x) => x.name === "Cube001"),
+      false
     );
     this.block13 = new Block(
-      size,
+      scene.find((x) => x.name === "Cube002"),
       true,
-      new THREE.Vector3(size * 2, max_height - one_unit * 2, 0),
       "Github",
       "github"
     );
     this.block21 = new Block(
-      size,
-      false,
-      new THREE.Vector3(0, max_height - one_unit, size)
+      scene.find((x) => x.name === "Cube003"),
+      false
     );
     this.block22 = new Block(
-      size,
+      scene.find((x) => x.name === "Cube004"),
       true,
-      new THREE.Vector3(size, max_height - one_unit * 1.5, size),
       "Start",
       "start"
     );
     this.block23 = new Block(
-      size,
-      false,
-      new THREE.Vector3(size * 2, max_height - one_unit * 2.2, size)
+      scene.find((x) => x.name === "Cube005"),
+      false
     );
     this.block31 = new Block(
-      size,
+      scene.find((x) => x.name === "Cube006"),
       true,
-      new THREE.Vector3(0, max_height - one_unit * 2, size * 2),
       "Services",
       "services"
     );
     this.block32 = new Block(
-      size,
-      false,
-      new THREE.Vector3(size, max_height - one_unit * 2.2, size * 2)
+      scene.find((x) => x.name === "Cube007"),
+      false
     );
     this.block33 = new Block(
-      size,
+      scene.find((x) => x.name === "Cube008"),
       true,
-      new THREE.Vector3(size * 2, max_height - one_unit * 2.5, size * 2),
       "Skills",
       "skills"
     );
 
-    this.block12.mesh.position.x -= 0.1;
-    this.block13.mesh.position.x -= 0.2;
-    this.block21.mesh.position.z -= 0.1;
-    this.block23.mesh.position.x -= 0.1;
-    this.block31.mesh.position.z -= 0.2;
-    this.block32.mesh.position.z -= 0.1;
     this.hover_objects = [
       this.block11.mesh,
       this.block13.mesh,
@@ -79,16 +60,6 @@ export default class Blocks {
       this.block33.mesh,
     ];
     this.hover_object_init();
-
-    this.mesh.add(this.block11.mesh);
-    this.mesh.add(this.block12.mesh);
-    this.mesh.add(this.block13.mesh);
-    this.mesh.add(this.block21.mesh);
-    this.mesh.add(this.block22.mesh);
-    this.mesh.add(this.block23.mesh);
-    this.mesh.add(this.block31.mesh);
-    this.mesh.add(this.block32.mesh);
-    this.mesh.add(this.block33.mesh);
   }
 
   hover_object_init() {

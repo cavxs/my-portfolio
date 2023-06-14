@@ -26,6 +26,7 @@ export default class Experience {
     this.resourceLoader = new ResourceLoader();
     this.renderer.setSize(innerWidth, innerHeight);
     this.renderer.setPixelRatio(window.devicePixelRatio);
+    this.renderer.useLegacyLights = false;
     this.dt = 0;
 
     document.body.appendChild(this.renderer.domElement);

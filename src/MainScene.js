@@ -34,6 +34,36 @@ export default class MainScene {
     //   "assets/starscape_2.png",
     // ]);
     // this.instance.background = texture;
+    console.log(loaded.scene.children);
+
+    const sunup = loaded.scene.children.find((x) => x.name === "sunup");
+    const sunleft = loaded.scene.children.find((x) => x.name === "sunleft");
+    const sunright = loaded.scene.children.find((x) => x.name === "sunright");
+    const starlight = loaded.scene.children
+      .find((x) => x.name === "Cube002")
+      .children.find((x) => x.name === "starlight");
+    // sunup.castShadow = true;
+    // console.log(sunup);
+
+    // const person = loaded.scene.children.find((x) => x.name === "person");
+    // const tloader = new THREE.TextureLoader();
+
+    // person.material.transparent = true;
+
+    // person.material.flipY = true;
+    // person.material.map = tloader.load("../assets/person_texture.jpg");
+    // console.log(person.material);
+
+    // sunup.intensity = 2;
+    sunup.intensity = 2;
+    // sunright.intensity = 3;
+    sunright.intensity = 2;
+    // sunleft.intensity = 10;
+    sunleft.intensity = 7;
+    starlight.intensity = 661;
+
+    // console.log(loaded.scene.children);
+
     this.backgroundGradient(0x000000, 0x040921);
     this.stars();
 
@@ -74,6 +104,11 @@ export default class MainScene {
     // const light3 = new THREE.HemisphereLight(0xd9cebf);
     // const light4 = new THREE.DirectionalLight(0xffffff);
 
+    // const light1 = new THREE.DirectionalLight(0xffffff);
+    // const light1helper = new THREE.DirectionalLightHelper(light1, 5);
+    // light1.position.set(0, 50, 0);
+    // light1.intensity = 1;
+    // const light1helper =
     // light2.position.set(0, 19, 60);
     // light2.intensity = 1;
 
@@ -91,10 +126,11 @@ export default class MainScene {
     // this.instance.add(light4);
     // this.instance.add(light1helper);
     // this.instance.add(light2helper);
-    // this.blocks = new Blocks();
-    this.instance.add(loaded);
+    this.blocks = new Blocks(loaded.scene.children);
 
-    this.addToScene(this.blocks, new THREE.Vector3(0, -75, 0));
+    this.instance.add(loaded.scene);
+
+    this.addToScene(this.blocks);
   }
   removeFromScene(obj) {
     const mesh = obj.mesh;
