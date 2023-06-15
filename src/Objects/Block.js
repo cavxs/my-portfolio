@@ -48,14 +48,28 @@ export default class Block {
     } else {
       if (this.section === "start") {
         this.experience.scene.startInitialClick();
-
-        gsap.to(this.mesh.position, {
-          y: this.original_pos.y - 2,
-          duration: 0.1,
-          onComplete: () => {
-            this.disableMouseActions = false;
-          },
+        gsap.to(this.mesh.children[0].rotation, {
+          // y: 7,
+          y: 32,
+          duration: 2,
+          ease: "power2",
         });
+        //click
+        gsap
+          .to(this.mesh.position, {
+            y: this.original_pos.y - 2,
+            duration: 0.1,
+            onComplete: () => {
+              this.disableMouseActions = false;
+            },
+          })
+          .then(() => {
+            gsap.to(this.mesh.position, {
+              y: this.original_pos.y,
+              duration: 0.4,
+              ease: "power2",
+            });
+          });
       }
     }
     this.disableMouseActions = true;

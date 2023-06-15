@@ -39,12 +39,33 @@ p {
   color: #1b202c;
   font-family: "Lexend";
   font-weight: 500;
-
   border-radius: 50px;
   outline: none;
   border: none;
-  padding: 0 20px;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 20px;
+
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  padding-right: 20px;
+
+  transition: padding-right 0.1s ease;
+}
+
+.button img {
+  position: absolute;
+
+  width: 24px;
+  height: 24px;
+  left: 115px;
+}
+
+.button:hover {
+  padding-right: 60px;
 }
 
 #gui {
@@ -74,9 +95,9 @@ p {
 }
 
 #gui .popout {
-  transform: scale(1) translateY(0);
-  transform-origin: center;
-  transition: transform 0.5s ease-in-out;
+  /* transform: scale(1) translateY(0); */
+  /* transform-origin: center;
+  transition: transform 0.5s ease-in-out; */
 }
 
 #gui:not(.hidden) .popout {

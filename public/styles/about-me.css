@@ -64,6 +64,42 @@
   margin-left: 50px;
 }
 
+#about-me .projects > div:nth-child(1) {
+  background: url("../assets/projects/classrooms.PNG");
+  background-size: 310px;
+  background-position-x: center;
+  background-position-y: center;
+  box-shadow: inset 0 0 70px 62px rgb(0 0 0 / 90%);
+}
+#about-me .projects > div:nth-child(2) {
+  background: url("../assets/projects/yos.PNG");
+  background-size: 310px;
+  background-position-x: center;
+  background-position-y: center;
+  box-shadow: inset 0 0 70px 62px rgb(0 0 0 / 90%);
+}
+#about-me .projects > div:nth-child(3) {
+  background: url("../assets/projects/socialm.PNG");
+  background-size: 310px;
+  background-position-x: center;
+  background-position-y: center;
+  box-shadow: inset 0 0 70px 62px rgb(0 0 0 / 90%);
+}
+#about-me .projects > div:nth-child(4) {
+  background: url("../assets/projects/commerce.PNG");
+  background-size: 310px;
+  background-position-x: center;
+  background-position-y: center;
+  box-shadow: inset 0 0 70px 62px rgb(0 0 0 / 90%);
+}
+#about-me .projects > div:nth-child(5) {
+  background: url("../assets/projects/timetable.PNG");
+  background-size: 310px;
+  background-position-x: center;
+  background-position-y: center;
+  box-shadow: inset 0 0 70px 62px rgb(0 0 0 / 90%);
+}
+
 #about-me .arrow {
   position: absolute;
   cursor: pointer;

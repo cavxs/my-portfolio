@@ -68,9 +68,9 @@ window.INITIALIZE_LISTENERS = () => {
 
   const sectionOffsets = [
     0,
-    document.querySelector("#about-me").offsetTop,
-    document.querySelector("#ach").offsetTop,
-    document.querySelector("#hire").offsetTop,
+    document.querySelector("#about-me").offsetTop - 100,
+    document.querySelector("#ach").offsetTop - 100,
+    document.querySelector("#hire").offsetTop - 100,
   ];
 
   const SCENE = window.experience.scene;

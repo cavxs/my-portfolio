@@ -113,14 +113,16 @@ export default class MainScene {
       });
       this.experience.gui.instance.scrollTop += 10;
       // Move the camera to the target position
-      gsap.to(this.starSystem.position, {
-        y: targetPosition,
-        duration: 0.5,
-        ease: "power2.out",
-        // onUpdate: () => {
-        //   console.log(this.starSystem.position);
-        // },
-      });
+      if (this.current_section) {
+        gsap.to(this.starSystem.position, {
+          y: targetPosition,
+          duration: 0.5,
+          ease: "power2.out",
+          // onUpdate: () => {
+          //   console.log(this.starSystem.position);
+          // },
+        });
+      }
       // this._starSpeed = this._initialStarSpeed * scrollDelta * 10;
     });
 
