@@ -8,8 +8,8 @@ export default class Blocks {
     this.block11 = new Block(
       scene.find((x) => x.name === "Cube"),
       true,
-      "Portfolio",
-      "portfolio"
+      "about-me",
+      "about-me"
     );
     this.block12 = new Block(
       scene.find((x) => x.name === "Cube001"),
@@ -18,8 +18,8 @@ export default class Blocks {
     this.block13 = new Block(
       scene.find((x) => x.name === "Cube002"),
       true,
-      "Github",
-      "github"
+      "ach",
+      "ach"
     );
     this.block21 = new Block(
       scene.find((x) => x.name === "Cube003"),
@@ -38,8 +38,8 @@ export default class Blocks {
     this.block31 = new Block(
       scene.find((x) => x.name === "Cube006"),
       true,
-      "Services",
-      "services"
+      "hire",
+      "hire"
     );
     this.block32 = new Block(
       scene.find((x) => x.name === "Cube007"),
@@ -48,8 +48,8 @@ export default class Blocks {
     this.block33 = new Block(
       scene.find((x) => x.name === "Cube008"),
       true,
-      "Skills",
-      "skills"
+      "home",
+      "home"
     );
 
     this.hover_objects = [

@@ -80,7 +80,7 @@
 #about-me .projects > div:last-child {
   margin-right: 200px;
 }
-#about-me .projects > div > * {
+#about-me .projects > div * {
   position: absolute;
   left: -40px;
 }
@@ -101,22 +101,10 @@
   font-family: "Lexend";
   top: 155px;
   color: white;
-  display: inline-flex;
   font-size: 17px;
-  /* justify-content: space-between; */
-  height: 33px;
   text-decoration: none;
 }
-#about-me .projects > div > a::after {
-  content: "";
-  display: block;
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 110%;
-  height: 1px;
-  background-color: white;
-}
+
 #about-me .projects > div > a > div {
   position: absolute;
   left: 0;
@@ -126,23 +114,11 @@
   background-color: white;
 }
 
-#about-me .projects > div > a > img {
-  width: 24px;
-  height: 24px;
-  margin-left: 10px;
-
-  transition: transform 0.1s ease-in-out;
-}
-
-#about-me .projects > div > a:hover img {
-  transform: translateX(10px);
-}
-
 #about-me .dots {
   display: flex;
   flex-direction: row;
   margin: 40px auto 90px;
-  width: min-content;
+  width: 60px;
   margin-top: 40px;
 }
 
@@ -196,12 +172,10 @@
 
 #about-me .services > div p {
   font-size: 17px;
-  width: 85%;
 }
 
 #about-me .services > div button {
   align-self: center;
-  flex-shrink: 0;
 }
 
 #about-me .services > div:hover {

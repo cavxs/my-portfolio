@@ -55,46 +55,11 @@ function reveal() {
     }
   }
 }
-
-const sections = document.querySelectorAll("#gui section.guisection");
-
 window.INITIALIZE_LISTENERS = () => {
   // To check the scroll position on page load
   reveal();
-  // sectionOffsets["home"] = 0;
-  // sectionOffsets["about-me"] = ;
-  // sectionOffsets["ach"] = ;
-  // sectionOffsets["hire"] = ;
 
-  const sectionOffsets = [
-    0,
-    document.querySelector("#about-me").offsetTop,
-    document.querySelector("#ach").offsetTop,
-    document.querySelector("#hire").offsetTop,
-  ];
-
-  const SCENE = window.experience.scene;
-  document.getElementById("gui").addEventListener("scroll", (e) => {
-    reveal();
-
-    const scrollT = e.target.scrollTop;
-
-    let section_at = "home";
-    for (var i = 0; i < sectionOffsets.length; i++) {
-      if (scrollT >= sectionOffsets[i]) {
-        section_at = sections[i].id;
-      }
-    }
-
-    // if the section i am at right now by scrolling is not the same as the section in the exprience
-
-    if (SCENE.current_section !== section_at) {
-      history.replaceState(null, null, "#" + section_at);
-      SCENE.current_section = section_at;
-      // console.log("new section:", section_at);
-    }
-  });
-  wordflick();
+  document.getElementById("gui").addEventListener("scroll", reveal);
 };
 
 const prSroller = document.querySelector("#about-me .projects");
@@ -161,46 +126,3 @@ hirePDetails.oninput = () => {
   hirePDetails.style.height = "";
   hirePDetails.style.height = hirePDetails.scrollHeight + "px";
 };
-
-const skill_phrase = document.getElementById("skill-phrase");
-
-var words = ["WEB DEVELOPER", "MOBILE DEV", "COOL AS HELL"],
-  part,
-  i = 0,
-  offset = 0,
-  len = words.length,
-  forwards = true,
-  skip_count = 0,
-  skip_delay = 100, // 15
-  speed = 30;
-function wordflick() {
-  setInterval(function () {
-    if (forwards) {
-      if (offset >= words[i].length) {
-        ++skip_count;
-        if (skip_count == skip_delay) {
-          forwards = false;
-          skip_count = 0;
-        }
-      }
-    } else {
-      if (offset == 0) {
-        forwards = true;
-        i++;
-        offset = 0;
-        if (i >= len) {
-          i = 0;
-        }
-      }
-    }
-    part = words[i].substring(0, offset);
-    if (skip_count == 0) {
-      if (forwards) {
-        offset++;
-      } else {
-        offset--;
-      }
-    }
-    skill_phrase.innerText = part;
-  }, speed);
-}

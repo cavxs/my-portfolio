@@ -17,6 +17,8 @@ export default class MainScene {
 
     this._starSpeed = 0.0001;
     this._initialStarSpeed = 0.0001;
+
+    this._debug_gui = false;
   }
 
   makeWorld(loaded = null) {
@@ -42,6 +44,13 @@ export default class MainScene {
     const starlight = loaded.scene.children
       .find((x) => x.name === "Cube002")
       .children.find((x) => x.name === "starlight");
+    const diamondlight = loaded.scene.children
+      .find((x) => x.name === "Cube")
+      .children.find((x) => x.name === "Point");
+    const startlight = loaded.scene.children
+      .find((x) => x.name === "Cube004")
+      .children.find((x) => x.name === "startlight");
+    console.log(diamondlight);
     // sunup.castShadow = true;
     // console.log(sunup);
 
@@ -55,22 +64,27 @@ export default class MainScene {
     // console.log(person.material);
 
     // sunup.intensity = 2;
-    sunup.intensity = 2;
+    // 2
+    sunup.intensity = 0.7;
     // sunright.intensity = 3;
-    sunright.intensity = 2;
+    // 2
+    sunright.intensity = 0.9;
     // sunleft.intensity = 10;
-    sunleft.intensity = 7;
-    starlight.intensity = 661;
-
+    // 7
+    sunleft.intensity = 1;
+    // 661
+    starlight.intensity = 0.3;
+    diamondlight.intensity = 0.8;
+    startlight.intensity = 0.8;
     // console.log(loaded.scene.children);
 
     this.backgroundGradient(0x000000, 0x040921);
     this.stars();
 
-    const maxScrollUp = 900;
-    const maxScrollDown = -500;
+    const maxScrollUp = 600;
+    const maxScrollDown = -50;
 
-    this.experience.gui.instance.addEventListener("wheel", (e) => {
+    window.addEventListener("wheel", (e) => {
       const scrollDelta = -e.deltaY;
 
       const currentPosition = this.starSystem.position.y;
@@ -87,13 +101,24 @@ export default class MainScene {
         );
       }
 
+      const normalizedWheelDelta = Math.max(-1, Math.min(1, scrollDelta));
+
+      const scrollStep = 200; // Adjust this value to change the scroll speed
+
+      gsap.to(this.experience.gui.instance, {
+        scrollTop:
+          this.experience.gui.instance.scrollTop -
+          scrollStep * normalizedWheelDelta,
+        duration: 0.2,
+      });
+      this.experience.gui.instance.scrollTop += 10;
       // Move the camera to the target position
       gsap.to(this.starSystem.position, {
         y: targetPosition,
         duration: 0.5,
         ease: "power2.out",
         // onUpdate: () => {
-        //   camera.lookAt(scene.position);
+        //   console.log(this.starSystem.position);
         // },
       });
       // this._starSpeed = this._initialStarSpeed * scrollDelta * 10;
@@ -131,6 +156,8 @@ export default class MainScene {
     this.instance.add(loaded.scene);
 
     this.addToScene(this.blocks);
+
+    if (this._debug_gui) this.startInitialClick();
   }
   removeFromScene(obj) {
     const mesh = obj.mesh;
@@ -176,13 +203,15 @@ export default class MainScene {
 
     // Create a texture from the canvas
     const texture = new THREE.CanvasTexture(canvas);
-    texture.encoding = THREE.sRGBEncoding;
+    texture.colorSpace = THREE.SRGBColorSpace;
     texture.gammaFactor = 2.2;
     // Set the background texture
     this.instance.background = texture;
   }
   startInitialClick() {
     this.initial_click = true;
+    this.current_section = "home";
+    this.experience.gui.selectSection("home");
     this.experience.cameraHandler.initialClickSetup();
     setTimeout(() => {
       this.experience.gui.initialize();
