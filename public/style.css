@@ -64,7 +64,7 @@ p {
   left: 115px;
 }
 
-.button:hover {
+.button:not(.static):hover {
   padding-right: 60px;
 }
 
