@@ -1,15 +1,24 @@
+const words = [
+  "WEB DEVELOPER",
+  "MOBILE DEVELOPER",
+  "SOFTWARE ENGINEER",
+  "WEB DESIGNER",
+  "FRONTEND DEVELOPER",
+  "BACKEND DEVELOPER",
+];
+
 window.STARTGUIANIMATIONS = () => {
   var f1 = document.getElementById("1f");
   var f2 = document.getElementById("2f");
   var f3 = document.getElementById("3f");
 
-  var f1a = { val: "0%" };
-  var f2a = { val: "0%" };
+  var f1a = { val: "0+" };
+  var f2a = { val: "+0%" };
   var f3a = { val: "0%" };
 
   anime({
     targets: f1a,
-    val: "20%",
+    val: "20+",
     round: 1,
     delay: 200,
     duration: 1500,
@@ -20,7 +29,7 @@ window.STARTGUIANIMATIONS = () => {
   });
   anime({
     targets: f2a,
-    val: "35%",
+    val: "+200%",
     round: 1,
     easing: "easeOutCubic",
     delay: 1000,
@@ -31,7 +40,7 @@ window.STARTGUIANIMATIONS = () => {
   });
   anime({
     targets: f3a,
-    val: "75%",
+    val: "100%",
     round: 1,
     easing: "easeOutCubic",
     delay: 2000,
@@ -70,7 +79,7 @@ window.INITIALIZE_LISTENERS = () => {
     0,
     document.querySelector("#about-me").offsetTop - 100,
     document.querySelector("#ach").offsetTop - 100,
-    document.querySelector("#hire").offsetTop - 100,
+    document.querySelector("#hire").offsetTop - 200,
   ];
 
   const SCENE = window.experience.scene;
@@ -164,8 +173,7 @@ hirePDetails.oninput = () => {
 
 const skill_phrase = document.getElementById("skill-phrase");
 
-var words = ["WEB DEVELOPER", "MOBILE DEV", "COOL AS HELL"],
-  part,
+var part,
   i = 0,
   offset = 0,
   len = words.length,

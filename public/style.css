@@ -157,22 +157,8 @@ p {
   flex-direction: row;
 }
 
-.icons svg {
-  width: 30px;
-  height: 30px;
-  margin-right: 20px;
-  cursor: pointer;
-}
-
-#whatsapp path {
-  fill: #ffffff;
-  transform: rotateX(0deg);
-  transition: all 0.1s ease-in;
-}
-
-#whatsapp:hover path {
-  transform: rotate(360deg);
-  fill: #25d366;
+.icons object {
+  margin-right: 10px;
 }
 
 #footer {
