@@ -1,0 +1,133 @@
+#home {
+  margin-bottom: 170px;
+}
+
+#home h1 {
+  font-family: "Bebas Neue", Helvetica;
+  font-size: 64px;
+  letter-spacing: 100%;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+}
+
+#home h1 span {
+  color: #fff;
+  animation: whiten 0.5s backwards;
+  animation-delay: 1s;
+}
+
+#home p.popout {
+  animation-delay: 0.1s !important;
+}
+
+#home .button.popout {
+  animation: popout 0.8s 0.2s ease backwards, whitenbg 1.2s 1s ease backwards !important;
+}
+
+@keyframes whitenbg {
+  0% {
+    background-color: #ffffffda;
+  }
+  100% {
+    background-color: #fff;
+  }
+}
+@keyframes whiten {
+  0% {
+    color: #ffffffda;
+  }
+  100% {
+    color: #fff;
+  }
+}
+#home > button {
+  margin-top: 0px;
+}
+#home .plus-stuff {
+  display: flex;
+  flex-direction: row;
+  margin-top: 90px;
+  width: 100%;
+  margin-left: -33px;
+  /* justify-content: space-between; */
+}
+#home .plus-stuff > div {
+  width: 33%;
+  /* background-color: red; */
+}
+#home .plus-stuff > div:nth-child(2) {
+  position: relative;
+  /* border-right: solid 1px #676a7559; */
+  /* border-left: solid 1px #676a7559; */
+}
+
+#home .plus-stuff > div:nth-child(2)::before {
+  display: block;
+  content: "";
+  position: absolute;
+  top: 0%;
+  height: 100%;
+  width: 1px;
+  background-color: #676a7559;
+
+  animation: expand-line 0.5s ease-in-out backwards;
+  animation-delay: 0.8s;
+}
+#home .plus-stuff > div:nth-child(2)::after {
+  display: block;
+  content: "";
+  position: absolute;
+  top: 0%;
+  right: 0;
+  height: 100%;
+  width: 1px;
+  background-color: #676a7559;
+
+  animation: expand-line 0.5s ease-in-out backwards;
+  animation-delay: 1.6s;
+}
+
+@keyframes expand-line {
+  0% {
+    top: 50%;
+    height: 0;
+  }
+
+  100% {
+    top: 0;
+    height: 100%;
+  }
+}
+#home .plus-stuff h4 {
+  font-family: "Bebas Neue";
+  color: #ffffffd1;
+  font-size: 55px;
+  font-weight: 400;
+  text-align: center;
+  margin: 0;
+}
+
+#home .plus-stuff > div:nth-child(1) h4 {
+  animation-delay: 0.4s !important;
+}
+#home .plus-stuff > div:nth-child(1) p {
+  animation-delay: 0.6s !important;
+}
+#home .plus-stuff > div:nth-child(2) h4 {
+  animation-delay: 1.2s !important;
+}
+#home .plus-stuff > div:nth-child(2) p {
+  animation-delay: 1.4s !important;
+}
+#home .plus-stuff > div:nth-child(3) h4 {
+  animation-delay: 2s !important;
+}
+#home .plus-stuff > div:nth-child(3) p {
+  animation-delay: 2.2s !important;
+}
+
+#home .plus-stuff p {
+  text-align: center;
+  font-size: 15px;
+  margin: 0;
+}
