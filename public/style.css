@@ -61,11 +61,15 @@ p {
 
   width: 24px;
   height: 24px;
-  left: 115px;
+  left: calc(100% + 15px);
 }
 
 .button:not(.static):hover {
   padding-right: 60px;
+}
+
+.button:not(.static):hover img {
+  left: calc((100% - 40px));
 }
 
 #gui {
@@ -173,4 +177,8 @@ p {
   font-family: "Lexend";
   white-space: nowrap;
   font-size: 20px;
+}
+
+.button.sm {
+  margin-top: 30px;
 }
