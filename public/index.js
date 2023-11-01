@@ -212,3 +212,34 @@ function wordflick() {
     skill_phrase.innerText = part;
   }, speed);
 }
+
+const mailTo = () => {
+  const name = document.getElementById("name").value;
+
+  const p_details = document.getElementById("hirepdetails").value;
+
+  const services_selection = document.getElementById("services-s");
+  const time_selection = document.getElementById("time-s");
+
+  let selected_service = services_selection.querySelector("ul li.selected");
+  let selected_time = time_selection.querySelector("ul li.selected");
+
+  if (selected_service) {
+    selected_service = selected_service.innerText;
+  } else {
+    selected_service = null;
+  }
+  if (selected_time) {
+    selected_time = selected_time.innerText;
+  } else {
+    selected_time = null;
+  }
+
+  window.open(
+    `mailto:ibrahim.alnuaimi.b@gmail.com?subject=${
+      selected_service ? selected_service : "Development or Design"
+    }&body=Hello Ibrahim,%0D%0A%0D%0AMy name is ${name}, and I need you to upgrade my business and take me to the next level with your services. Here are the project details:%0D%0A%0D%0A${p_details}%0D%0A%0D%0ATime duration: ${
+      selected_time ? selected_time : ""
+    }%0D%0A%0D%0ABest regards,%0D%0A${name}`
+  );
+};

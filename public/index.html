@@ -32,7 +32,7 @@
         <div class="plus-stuff">
           <div>
             <h4 class="popout" id="1f">20+</h4>
-            <p class="popout">Personal Projects</p>
+            <p class="popout">Client Projects</p>
           </div>
           <div>
             <h4 class="popout" id="2f">+200%</h4>
@@ -248,7 +248,7 @@
         <form>
           <h1>HIRE ME</h1>
 
-          <div class="selection">
+          <div class="selection" id="services-s">
             <h2>Services</h2>
             <ul>
               <li>Frontend</li>
@@ -258,7 +258,7 @@
               <li>Database Management</li>
             </ul>
           </div>
-          <div class="selection">
+          <div class="selection" id="time-s">
             <h2>Time Duration</h2>
             <ul>
               <li>1 week</li>
@@ -268,7 +268,14 @@
           </div>
           <div class="twoinps">
             <div class="inp">
-              <input placeholder=" " maxlength="25" type="text" name="" id="" />
+              <input
+                placeholder=" "
+                maxlength="25"
+                type="text"
+                name="name"
+                required
+                id="name"
+              />
               <span data-placeholder="Name" class="focuser"></span>
             </div>
             <div class="inp">
@@ -277,6 +284,7 @@
                 type="email"
                 maxlength="30"
                 name=""
+                required
                 id=""
               />
               <span data-placeholder="Email" class="focuser"></span>
@@ -289,7 +297,7 @@
               class="focuser"
             ></span>
           </div>
-          <button class="button sm">
+          <button class="button sm" onclick="mailTo()">
             Send Message
             <img src="./assets/small-arrow-black.png" />
           </button>
