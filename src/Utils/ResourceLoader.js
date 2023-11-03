@@ -1,4 +1,5 @@
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
+import glbFile from "../assets/scene.glb";
 
 export default class ResourceLoader {
   constructor() {
@@ -6,8 +7,6 @@ export default class ResourceLoader {
   }
 
   load(cb) {
-    this.loader.load("../assets/scene.glb", cb, undefined, (err) =>
-      console.error(err)
-    );
+    this.loader.load(glbFile, cb, undefined, (err) => console.error(err));
   }
 }
